@@ -10,6 +10,11 @@
                 <i class="fas fa-table me-1"></i>
                 Daftar Frekuensi Radio TNI AL <br></br>
             </div>
+
+            <div class="input-group mb-3 float-right">
+                <a href="{{ route('index.create') }}" class="btn btn-sm btn-primary p-2" style='margin-left:-12px'><i class="fas fa-plus"></i> Tambah Data</a>
+            </div>
+
             <div class="card-body">
                 <table id="datatablesSimple">
                     <thead>
@@ -43,10 +48,13 @@
                         </tr>
                     </tfoot>
                     <tbody>
+
+                        <?php $number = 1; ?>
+                        
                         @foreach ( $frekuensi as $frekuensi )
                         @if($frekuensi->divisi_code==3)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $number }}</td>
                             <td>{{ $frekuensi->type_code }}</td>
                             <td>{{ $frekuensi->frekuensi }}</td>
                             <td>{{ $frekuensi->bandwith }}</td>
@@ -54,7 +62,7 @@
                             <td>{{ $frekuensi->service }}</td>
                             <td>{{ $frekuensi->power }}</td>
                             <td>{{ $frekuensi->location }}</td>
-                            <td>LANAL 1</td>
+                            <td>{{ $frekuensi->unit }}</td>
                             <td>{{ $frekuensi->status }}</td>
                             <td>
                                 <form action="{{ route('index.destroy', $frekuensi->id) }}" method="POST">
@@ -66,6 +74,9 @@
                                     <button type="submit" onclick="return confirm('Are you sure want to delete this data?')"  class="btn btn-danger btn-sm"><i class="fas fa-trash" style="font-size:10px"></i></button>
                                 </form>
                             </td>
+
+                            <?php $number++; ?>
+
                         </tr>
                         @endif
                         @endforeach

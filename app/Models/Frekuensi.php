@@ -17,6 +17,7 @@ class Frekuensi extends Model
     	'service',
     	'power',
     	'location',
+		'unit',
     	'status',
     	'type_code',
 		'divisi_code',

@@ -23,6 +23,7 @@
                             <th>JENIS <br>LAYANAN</br></th>
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
+                            <th>SATUAN KERJA</th>
                             <th>STATUS</th>
                             <th>AKSI</th>
                         </tr>
@@ -37,6 +38,7 @@
                             <th>JENIS <br>LAYANAN</br></th>
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
+                            <th>SATUAN KERJA</th>
                             <th>STATUS</th>
                             <th>AKSI</th>
                         </tr>
@@ -52,6 +54,7 @@
                             <td>{{ $frekuensi->service }}</td>
                             <td>{{ $frekuensi->power }}</td>
                             <td>{{ $frekuensi->location }}</td>
+                            <td>{{ $frekuensi->unit }}</td>
                             <td>{{ $frekuensi->status }}</td>
                             <td>
                                 <form action="{{ route('index.destroy', $frekuensi->id) }}" method="POST">

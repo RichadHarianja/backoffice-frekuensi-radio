@@ -26,14 +26,22 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/page/create', [MabesTNIController::class, 'create'])->name('index.create');
     Route::get('/page/edit{id}', [MabesTNIController::class, 'edit'])->name('index.edit');
     Route::put('/page/update{id}', [MabesTNIController::class, 'update'])->name('index.update');
+
+    //Delete Method
     Route::delete('/page/delete{id}', [MabesTNIController::class, 'destroy'])->name('index.destroy');
+    Route::delete('/page/delete{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+
+    // Users
+    Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
+    Route::get('/page/edit{id}', [UsersController::class, 'edit'])->name('users.edit');
 
     
 
 
 
 
-    // POST ROUTE
+    // Post Method
     Route::post('/logout', [LogoutController::class, 'logout'])->name('auth.logout');
     Route::post('/mabestni/store', [MabesTNIController::class, 'store'])->name('index.store');
+    Route::post('/users/store', [UsersController::class, 'store'])->name('users.store');
 });

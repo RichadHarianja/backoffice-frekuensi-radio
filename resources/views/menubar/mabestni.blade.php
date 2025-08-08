@@ -34,6 +34,7 @@
                             <th>JENIS <br>LAYANAN</br></th>
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
+                            <th>SATUAN KERJA</th>
                             <th>STATUS</th>
                             <th width="280px">AKSI</th>
                         </tr>
@@ -48,15 +49,19 @@
                             <th>JENIS <br>LAYANAN</br></th>
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
+                            <th>SATUAN KERJA</th>
                             <th>STATUS</th>
                             <th>AKSI</th>
                         </tr>
                     </tfoot>
                     <tbody>
+
+                        <?php $number = 1; ?>
+
                         @foreach ( $frekuensi as $frekuensi )
                         @if($frekuensi->divisi_code==1)
                         <tr>
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $number }}</td>
                             <td>{{ $frekuensi->type_code }}</td>
                             <td>{{ $frekuensi->frekuensi }}</td>
                             <td>{{ $frekuensi->bandwith }}</td>
@@ -64,6 +69,7 @@
                             <td>{{ $frekuensi->service }}</td>
                             <td>{{ $frekuensi->power }}</td>
                             <td>{{ $frekuensi->location }}</td>
+                            <td>{{ $frekuensi->unit }}</td>
                             <td>{{ $frekuensi->status }}</td>
                             <td>
                                 <form action="{{ route('index.destroy', $frekuensi->id) }}" method="POST">
@@ -75,6 +81,9 @@
                                     <button type="submit" onclick="return confirm('Are you sure want to delete this data?')"  class="btn btn-danger btn-sm"><i class="fas fa-trash" style="font-size:10px"></i></button>
                                 </form>
                             </td>
+
+                            <?php $number++; ?>
+                            
                         </tr>
                         @endif
                         @endforeach

@@ -7,6 +7,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Services\DataTable;
 use Illuminate\Support\Facades\Hash;
+//import return type View
+use Illuminate\View\View;
+//import Http Request
+use Illuminate\Http\RedirectResponse;
+//import Facades Storage
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -58,7 +64,7 @@ class UsersController extends Controller
             'password'=>Hash::make($request->password),
         ]);
         
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('message', 'User created successfully.');
     }
 
     /**
@@ -72,9 +78,10 @@ class UsersController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $id)
+    public function edit($id)
     {
-        return view('layout.edit', compact('id'));
+        $users = User::find($id);
+        return view('layout.editNewUsers', compact('users'));
     }
 
     /**
@@ -99,7 +106,10 @@ class UsersController extends Controller
             'password.required' => 'Password wajib diisi'
         ]);
 
-        DB::table('users')->insert([
+        //get product by ID
+        $users = User::find($id);
+
+        DB::table('users')->where('id',$id)->update([
             'name'=>$request->name,
             'email'=>$request->email,
             'role'=>$request->role,
@@ -107,7 +117,7 @@ class UsersController extends Controller
             'password'=>Hash::make($request->password),
         ]);
                 
-        return redirect()->route('users.index');
+        return redirect()->route('users.index')->with('message', 'User updated successfully.');
     }
 
     /**

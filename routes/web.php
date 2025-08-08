@@ -24,16 +24,17 @@ Route::middleware(['auth'])->group(function () {
 
     // Main Menu
     Route::get('/page/create', [MabesTNIController::class, 'create'])->name('index.create');
-    Route::get('/page/edit{id}', [MabesTNIController::class, 'edit'])->name('index.edit');
-    Route::put('/page/update{id}', [MabesTNIController::class, 'update'])->name('index.update');
+    Route::get('/page/edit/{id}', [MabesTNIController::class, 'edit'])->name('index.edit');
+    Route::put('/page/update/{id}', [MabesTNIController::class, 'update'])->name('index.update');
 
     //Delete Method
-    Route::delete('/page/delete{id}', [MabesTNIController::class, 'destroy'])->name('index.destroy');
-    Route::delete('/page/delete{id}', [UsersController::class, 'destroy'])->name('users.destroy');
+    Route::delete('/page/delete/{id}', [MabesTNIController::class, 'destroy'])->name('index.destroy');
+    Route::delete('/page/delete/user/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 
     // Users
     Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
-    Route::get('/page/edit{id}', [UsersController::class, 'edit'])->name('users.edit');
+    Route::get('/page/edit/users/{id}', [UsersController::class, 'edit'])->name('users.edit');
+    Route::put('/page/update/user/{id}', [UsersController::class, 'update'])->name('users.update');
 
     
 

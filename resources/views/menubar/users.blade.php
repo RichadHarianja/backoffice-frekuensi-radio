@@ -5,6 +5,13 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">List User</li>
         </ol>
+
+        @if (session()->has('message'))
+        <div class="alert alert-success">
+            {{ session()->get('message') }}
+        </div>
+        @endif
+
         <div class="row">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>

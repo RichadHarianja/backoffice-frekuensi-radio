@@ -10,8 +10,9 @@
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
-    <body class="bg-light">
-        <div id="layoutAuthentication">
+    <!-- background-image: url('assets/img/images.jpeg') }}; -->
+    <body class="bg-red-50">
+        <div id="layoutAuthentication" style="background-color : #5e7561;">
             <div id="layoutAuthentication_content">
                 <main>
                     <div class="container">

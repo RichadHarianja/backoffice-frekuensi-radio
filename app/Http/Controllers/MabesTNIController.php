@@ -33,7 +33,8 @@ class MabesTNIController extends Controller
     public function store(Request $request)
     {
         // melakukan validasi data
-        $request->validate([
+        $request->validate(
+        [
             'frekuensi' => 'required|numeric',
             'bandwith' => 'required|numeric',
             'type' => 'required|max:100',
@@ -59,6 +60,7 @@ class MabesTNIController extends Controller
             'divisi_code.required' => 'Divisi wajib diisi'
         ]);
 
+
         DB::table('f_radio')->insert([
             'frekuensi'=>$request->frekuensi,
             'bandwith'=>$request->bandwith,
@@ -70,9 +72,11 @@ class MabesTNIController extends Controller
             'status'=>$request->status,
             'type_code'=>$request->type_code,
             'divisi_code'=>$request->divisi_code,
+            'created_at'=>now(),
+            'updated_at'=>now(),
         ]);
         
-        return redirect()->route('mabestni.index');
+        return redirect()->route('mabestni.index')->with('message', 'Data created successfully.');
     }
 
     /**
@@ -86,9 +90,10 @@ class MabesTNIController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Frekuensi $id)
+    public function edit($id)
     {
-        return view('layout.edit', compact('id'));
+        $frekuensi = Frekuensi::find($id);
+        return view('layout.edit', compact('frekuensi'));
     }
 
     /**
@@ -123,6 +128,8 @@ class MabesTNIController extends Controller
             'divisi_code.required' => 'Divisi wajib diisi'
         ]);
 
+        $frekuensi = Frekuensi::find($id);
+
         DB::table('f_radio')->where('id',$id)->update([
             'frekuensi'=>$request->frekuensi,
             'bandwith'=>$request->bandwith,
@@ -136,7 +143,7 @@ class MabesTNIController extends Controller
             'divisi_code'=>$request->divisi_code,
         ]);
                 
-        return redirect()->route('mabestni.index');
+        return redirect()->route('mabestni.index')->with('message', 'Data updated successfully.');
     }
 
     /**
@@ -147,6 +154,6 @@ class MabesTNIController extends Controller
         $id->delete();
     
         return redirect()->route('mabestni.index')
-                ->with('message','Data berhasil di hapus');
+                ->with('message','Data deleted successfully.');
     }
 }

@@ -35,12 +35,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
     Route::get('/page/edit/users/{id}', [UsersController::class, 'edit'])->name('users.edit');
     Route::put('/page/update/user/{id}', [UsersController::class, 'update'])->name('users.update');
-
-    
-
-
-
-
     // Post Method
     Route::post('/logout', [LogoutController::class, 'logout'])->name('auth.logout');
     Route::post('/mabestni/store', [MabesTNIController::class, 'store'])->name('index.store');

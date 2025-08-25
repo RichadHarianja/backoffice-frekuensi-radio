@@ -24,6 +24,7 @@
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
                             <th>SATUAN KERJA</th>
+                            <th>DIVISI</th>
                             <th>STATUS</th>
                             <th>AKSI</th>
                         </tr>
@@ -39,6 +40,7 @@
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
                             <th>SATUAN KERJA</th>
+                            <th>DIVISI</th>
                             <th>STATUS</th>
                             <th>AKSI</th>
                         </tr>
@@ -55,6 +57,7 @@
                             <td>{{ $frekuensi->power }}</td>
                             <td>{{ $frekuensi->location }}</td>
                             <td>{{ $frekuensi->unit }}</td>
+                            <td>{{ $frekuensi->divisi_code }}</td>
                             <td>{{ $frekuensi->status }}</td>
                             <td>
                                 <form action="{{ route('index.destroy', $frekuensi->id) }}" method="POST">

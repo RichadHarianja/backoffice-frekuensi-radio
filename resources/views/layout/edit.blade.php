@@ -12,12 +12,12 @@
                 Edit data
             </div>
             <div class="card-body">
-                <form action="{{ route('index.update', $id->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('index.update', $frekuensi->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('put')
+                    @method('PUT')
                     <div class="form-group">
                         <label for="type_code">JENIS FREKUENSI:</label>
-                        <input type="text" class="form-control @error('type_code') is-invalid @enderror" id="type_code" name="type_code" value="{{ $id->type_code }}">
+                        <input type="text" class="form-control @error('type_code') is-invalid @enderror" id="type_code" name="type_code" value="{{ $frekuensi->type_code }}">
                         @error('type_code')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -25,7 +25,7 @@
                     
                     <div class="form-group">
                         <label for="frekuensi">FREKUENSI [MHz]:</label>
-                        <input type="text" class="form-control @error('frekuensi') is-invalid @enderror" id="frekuensi" name="frekuensi" value="{{ $id->frekuensi }}">
+                        <input type="text" class="form-control @error('frekuensi') is-invalid @enderror" id="frekuensi" name="frekuensi" value="{{ $frekuensi->frekuensi }}">
                         @error('frekuensi')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -33,7 +33,7 @@
 
                     <div class="form-group">
                         <label for="bandwith">BANDWITH [KHz]:</label>
-                        <input type="text" class="form-control @error('bandwith') is-invalid @enderror" id="bandwith" name="bandwith" value="{{ $id->bandwith }}">
+                        <input type="text" class="form-control @error('bandwith') is-invalid @enderror" id="bandwith" name="bandwith" value="{{ $frekuensi->bandwith }}">
                         @error('bandwith')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -41,7 +41,7 @@
 
                     <div class="form-group">
                         <label for="type">JENIS PENGGUNAAN:</label>
-                        <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" name="type" value="{{ $id->type }}">
+                        <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" name="type" value="{{ $frekuensi->type }}">
                         @error('type')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -49,7 +49,7 @@
 
                     <div class="form-group">
                         <label for="service">JENIS LAYANAN:</label>
-                        <input type="text" class="form-control @error('service') is-invalid @enderror" id="service" name="service" value="{{ $id->service }}">
+                        <input type="text" class="form-control @error('service') is-invalid @enderror" id="service" name="service" value="{{ $frekuensi->service }}">
                         @error('service')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -57,7 +57,7 @@
 
                     <div class="form-group">
                         <label for="power">POWER [W]:</label>
-                        <input type="text" class="form-control @error('power') is-invalid @enderror" id="power" name="power" value="{{ $id->power }}">
+                        <input type="text" class="form-control @error('power') is-invalid @enderror" id="power" name="power" value="{{ $frekuensi->power }}">
                         @error('power')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -65,7 +65,7 @@
 
                     <div class="form-group">
                         <label for="location">LOKASI:</label>
-                        <input type="text" class="form-control @error('location') is-invalid @enderror" id="location" name="location" value="{{ $id->location }}">
+                        <input type="text" class="form-control @error('location') is-invalid @enderror" id="location" name="location" value="{{ $frekuensi->location }}">
                         @error('location')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -73,15 +73,23 @@
 
                     <div class="form-group">
                         <label for="status">STATUS:</label>
-                        <input type="text" class="form-control @error('status') is-invalid @enderror" id="status" name="status" value="{{ $id->status }}">
+                        <input type="text" class="form-control @error('status') is-invalid @enderror" id="status" name="status" value="{{ $frekuensi->status }}">
                         @error('status')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="form-group">
+                        <label for="unit">SATUAN KERJA:</label>
+                        <input type="text" class="form-control @error('unit') is-invalid @enderror" id="unit" name="unit" value="{{ $frekuensi->unit }}">
+                        @error('unit')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label for="divisi_code">DIVISI:</label>
-                        <input type="text" class="form-control @error('divisi_code') is-invalid @enderror" id="divisi_code" name="divisi_code" value="{{ $id->divisi_code }}">
+                        <input type="text" class="form-control @error('divisi_code') is-invalid @enderror" id="divisi_code" name="divisi_code" value="{{ $frekuensi->divisi_code }}">
                         @error('divisi_code')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

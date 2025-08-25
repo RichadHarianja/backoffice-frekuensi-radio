@@ -59,7 +59,7 @@
                                 @endif
                             </td>
                             <td>
-                                @if($users->role==0)
+                                @if($users->status==0)
                                     AKTIF
                                 @else
                                     TIDAK AKTIF

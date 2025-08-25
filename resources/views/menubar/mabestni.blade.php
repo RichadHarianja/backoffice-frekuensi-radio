@@ -35,6 +35,7 @@
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
                             <th>SATUAN KERJA</th>
+                            <th>DIVISI</th>
                             <th>STATUS</th>
                             <th width="280px">AKSI</th>
                         </tr>
@@ -50,6 +51,7 @@
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
                             <th>SATUAN KERJA</th>
+                            <th>DIVISI</th>
                             <th>STATUS</th>
                             <th>AKSI</th>
                         </tr>
@@ -70,7 +72,14 @@
                             <td>{{ $frekuensi->power }}</td>
                             <td>{{ $frekuensi->location }}</td>
                             <td>{{ $frekuensi->unit }}</td>
-                            <td>{{ $frekuensi->status }}</td>
+                            <td>{{ $frekuensi->divisi_code }}</td>
+                            <td>
+                                @if($frekuensi->status==0)
+                                    AKTIF
+                                @else
+                                    TIDAK AKTIF
+                                @endif
+                            </td>
                             <td>
                                 <form action="{{ route('index.destroy', $frekuensi->id) }}" method="POST">
                                     <a href="{{ route('index.edit', $frekuensi->id) }}" class="btn btn-sm btn-warning">

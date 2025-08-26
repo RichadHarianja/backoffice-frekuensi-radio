@@ -16,7 +16,8 @@ class MabesTNIController extends Controller
     {
         
         $frekuensi = Frekuensi::all();
-        return view('menubar.mabestni', compact('frekuensi'));        
+        $divisiCode = Frekuensi::where('divisi_code', 1)->first();
+        return view('menubar.mabestni', compact('frekuensi', 'divisiCode'));        
     }
 
     /**
@@ -24,7 +25,9 @@ class MabesTNIController extends Controller
      */
     public function create()
     {
-        return view('layout.create');
+        $frekuensi = Frekuensi::all();
+        $divisiCode = Frekuensi::where('divisi_code', 1)->first();
+        return view('layout.mabestniStore', compact('frekuensi', 'divisiCode'));
     }
 
     /**

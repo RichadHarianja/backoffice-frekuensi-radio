@@ -23,7 +23,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get("/users", [UsersController::class, 'index'])->name('users.index');
 
     // Main Menu
-    Route::get('/page/create', [MabesTNIController::class, 'create'])->name('index.create');
+    Route::get('/mabestni/create', [MabesTNIController::class, 'create'])->name('mabestni.create');
+    Route::get('/tniad/create', [TNIADController::class, 'create'])->name('tniad.create');
+    Route::get('/tnial/create', [TNIALController::class, 'create'])->name('tnial.create');
+    Route::get('/tniau/create', [TNIAUController::class, 'create'])->name('tniau.create');
+    Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
+
     Route::get('/page/edit/{id}', [MabesTNIController::class, 'edit'])->name('index.edit');
     Route::put('/page/update/{id}', [MabesTNIController::class, 'update'])->name('index.update');
 
@@ -32,11 +37,16 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/page/delete/user/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 
     // Users
-    Route::get('/users/create', [UsersController::class, 'create'])->name('users.create');
+    
     Route::get('/page/edit/users/{id}', [UsersController::class, 'edit'])->name('users.edit');
     Route::put('/page/update/user/{id}', [UsersController::class, 'update'])->name('users.update');
     // Post Method
+    
     Route::post('/logout', [LogoutController::class, 'logout'])->name('auth.logout');
-    Route::post('/mabestni/store', [MabesTNIController::class, 'store'])->name('index.store');
+    
+    Route::post('/mabestni', [MabesTNIController::class, 'store'])->name('mabestni.store');
+    Route::post('/tniad', [TNIADController::class, 'store'])->name('tniad.store');
+    Route::post('/tnial', [TNIALController::class, 'store'])->name('tnial.store');
+    Route::post('/tniau', [TNIAUController::class, 'store'])->name('tniau.store');
     Route::post('/users/store', [UsersController::class, 'store'])->name('users.store');
 });

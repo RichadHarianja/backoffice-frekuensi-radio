@@ -17,8 +17,9 @@
                 <i class="fas fa-table me-1"></i>
                 Daftar Frekuensi Radio Markas Besar TNI <br></br>
             </div>
+            
             <div class="input-group mb-3 float-right">
-                <a href="{{ route('index.create') }}" class="btn btn-sm btn-primary p-2" style='margin-left:-12px'><i class="fas fa-plus"></i> Tambah Data</a>
+                <a href="{{ route('mabestni.create', $divisiCode->divisi_code) }}" class="btn btn-sm btn-primary p-2" style='margin-left:-12px'><i class="fas fa-plus"></i> Tambah Data</a>
             </div>
 
             <div class="card-body">

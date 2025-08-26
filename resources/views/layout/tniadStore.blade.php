@@ -12,7 +12,7 @@
                 Tambah data
             </div>
             <div class="card-body">
-                <form action="{{ route('index.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('tniad.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="type_code" class="form-label">JENIS FREKUENSI:</label>
@@ -95,7 +95,7 @@
 
                     <div class="form-group">
                         <label for="divisi_code">DIVISI :</label>
-                        <input type="text" class="form-control @error('divisi_code') is-invalid @enderror" id="divisi_code" name="divisi_code" value="1">
+                        <input type="text" class="form-control @error('divisi_code') is-invalid @enderror" id="divisi_code" name="divisi_code" value="{{ $divisiCode->divisi_code }}" readonly>
                         @error('divisi_code')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

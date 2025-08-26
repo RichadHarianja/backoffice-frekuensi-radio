@@ -12,7 +12,7 @@
             </div>
 
             <div class="input-group mb-3 float-right">
-                <a href="{{ route('index.create') }}" class="btn btn-sm btn-primary p-2" style='margin-left:-12px'><i class="fas fa-plus"></i> Tambah Data</a>
+                <a href="{{ route('tniau.create') }}" class="btn btn-sm btn-primary p-2" style='margin-left:-12px'><i class="fas fa-plus"></i> Tambah Data</a>
             </div>
 
             <div class="card-body">
@@ -66,7 +66,7 @@
                             <td>{{ $frekuensi->unit }}</td>
                             <td>{{ $frekuensi->status }}</td>
                             <td>
-                                <form action="{{ route('index.destroy', $frekuensi->id) }}" method="POST">
+                                <form action="{{ route('tniau.destroy', $frekuensi->id) }}" method="POST">
                                     <a href="{{ route('index.edit', $frekuensi->id) }}" class="btn btn-sm btn-warning">
                                         <i class="fas fa-edit" style="font-size:10px"></i></a>
                                     

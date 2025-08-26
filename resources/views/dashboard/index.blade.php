@@ -59,6 +59,7 @@
                             <td>{{ $frekuensi->unit }}</td>
                             <td>{{ $frekuensi->divisi_code }}</td>
                             <td>{{ $frekuensi->status }}</td>
+                            <!-- <td></td> -->
                         </tr>
                         @endforeach
                     </tbody>

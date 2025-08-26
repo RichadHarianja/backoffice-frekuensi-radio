@@ -35,6 +35,8 @@ Route::middleware(['auth'])->group(function () {
     //Delete Method
     Route::delete('/mabestni/delete/{id}', [MabesTNIController::class, 'destroy'])->name('mabestni.destroy');
     Route::delete('/tniad/delete/{id}', [TNIADController::class, 'destroy'])->name('tniad.destroy');
+    Route::delete('/tnial/delete/{id}', [TNIALController::class, 'destroy'])->name('tnial.destroy');
+    Route::delete('/tniau/delete/{id}', [TNIAUController::class, 'destroy'])->name('tniau.destroy');
     Route::delete('/page/delete/user/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 
     // Users

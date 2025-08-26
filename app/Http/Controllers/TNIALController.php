@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Frekuensi;
+use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Services\DataTable;
 
 class TNIALController extends Controller
 {
@@ -14,7 +16,8 @@ class TNIALController extends Controller
     public function index()
     {
         $frekuensi = Frekuensi::all();
-        return view('menubar.tnial', compact('frekuensi'));        
+        $divisiCode = Frekuensi::where('divisi_code', 3)->first();
+        return view('menubar.tnial', compact('frekuensi', 'divisiCode'));       
     }
 
     /**
@@ -22,7 +25,9 @@ class TNIALController extends Controller
      */
     public function create()
     {
-        //
+        $frekuensi = Frekuensi::all();
+        $divisiCode = Frekuensi::where('divisi_code', 2)->first();
+        return view('layout.tnialStore', compact('frekuensi', 'divisiCode'));
     }
 
     /**
@@ -30,7 +35,51 @@ class TNIALController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // melakukan validasi data
+        $request->validate(
+        [
+            'frekuensi' => 'required|numeric',
+            'bandwith' => 'required|numeric',
+            'type' => 'required|max:100',
+            'service' => 'required|max:100',
+            'power' => 'required|numeric',
+            'location' => 'required|max:100',
+            'unit' => 'required|max:100',
+            'status' => 'required|max:100',
+            'type_code' => 'required|max:100',
+            'divisi_code' => 'required|numeric',
+
+        ],
+        [
+            'frekuensi.required' => 'Frekuensi wajib diisi',
+            'bandwith.required' => 'Bandwith wajib diisi',
+            'type.required' => 'Jenis Penggunaan wajib diisi',
+            'service.required' => 'Jenis Layanan wajib diisi',
+            'power.required' => 'Power wajib diisi',
+            'location.required' => 'Lokasi wajib diisi',
+            'unit.required' => 'Satuan kerja wajib diisi',
+            'status.required' => 'Status wajib diisi',
+            'type_code.required' => 'Jenis Frekuensi wajib diisi',
+            'divisi_code.required' => 'Divisi wajib diisi'
+        ]);
+
+
+        DB::table('f_radio')->insert([
+            'frekuensi'=>$request->frekuensi,
+            'bandwith'=>$request->bandwith,
+            'type'=>$request->type,
+            'service'=>$request->service,
+            'power'=>$request->power,
+            'location'=>$request->location,
+            'unit'=>$request->unit,
+            'status'=>$request->status,
+            'type_code'=>$request->type_code,
+            'divisi_code'=>$request->divisi_code,
+            'created_at'=>now(),
+            'updated_at'=>now(),
+        ]);
+        
+        return redirect()->route('tnial.index')->with('message', 'Data created successfully.');
     }
 
     /**
@@ -44,9 +93,10 @@ class TNIALController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $frekuensi = Frekuensi::find($id);
+        return view('layout.edit', compact('frekuensi'));
     }
 
     /**
@@ -54,14 +104,59 @@ class TNIALController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // validasi data
+        $request->validate([
+            'frekuensi' => 'required|numeric',
+            'bandwith' => 'required|numeric',
+            'type' => 'required|max:100',
+            'service' => 'required|max:100',
+            'power' => 'required|numeric',
+            'location' => 'required|max:100',
+            'unit' => 'required|max:100',
+            'status' => 'required|max:100',
+            'type_code' => 'required|max:100',
+            'divisi_code' => 'required|numeric',
+
+        ],
+        [
+            'frekuensi.required' => 'Frekuensi wajib diisi',
+            'bandwith.required' => 'Bandwith wajib diisi',
+            'type.required' => 'Jenis Penggunaan wajib diisi',
+            'service.required' => 'Jenis Layanan wajib diisi',
+            'power.required' => 'Power wajib diisi',
+            'location.required' => 'Lokasi wajib diisi',
+            'unit.required' => 'Satuan kerja wajib diisi',
+            'status.required' => 'Status wajib diisi',
+            'type_code.required' => 'Jenis Frekuensi wajib diisi',
+            'divisi_code.required' => 'Divisi wajib diisi'
+        ]);
+
+        $frekuensi = Frekuensi::find($id);
+
+        DB::table('f_radio')->where('id',$id)->update([
+            'frekuensi'=>$request->frekuensi,
+            'bandwith'=>$request->bandwith,
+            'type'=>$request->type,
+            'service'=>$request->service,
+            'power'=>$request->power,
+            'location'=>$request->location,
+            'unit'=>$request->unit,
+            'status'=>$request->status,
+            'type_code'=>$request->type_code,
+            'divisi_code'=>$request->divisi_code,
+        ]);
+                
+        return redirect()->route('tnial.index')->with('message', 'Data updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Frekuensi $id)
     {
-        //
+        $id->delete();
+    
+        return redirect()->route('tnial.index')
+                ->with('message','Data deleted successfully.');
     }
 }

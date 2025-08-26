@@ -26,7 +26,7 @@ class TNIAUController extends Controller
     public function create()
     {
         $frekuensi = Frekuensi::all();
-        $divisiCode = Frekuensi::where('divisi_code', 2)->first();
+        $divisiCode = Frekuensi::where('divisi_code', 4)->first();
         return view('layout.tniauStore', compact('frekuensi', 'divisiCode'));
     }
 
@@ -96,7 +96,7 @@ class TNIAUController extends Controller
     public function edit($id)
     {
         $frekuensi = Frekuensi::find($id);
-        return view('layout.edit', compact('frekuensi'));
+        return view('layout.tniauEdit', compact('frekuensi'));
     }
 
     /**

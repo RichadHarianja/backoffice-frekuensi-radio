@@ -83,7 +83,7 @@
                             </td>
                             <td>
                                 <form action="{{ route('tniad.destroy', $frekuensi->id) }}" method="POST">
-                                    <a href="{{ route('index.edit', $frekuensi->id) }}" class="btn btn-sm btn-warning">
+                                    <a href="{{ route('tniad.edit', $frekuensi->id) }}" class="btn btn-sm btn-warning">
                                         <i class="fas fa-edit" style="font-size:10px"></i></a>
                                     
                                     @csrf

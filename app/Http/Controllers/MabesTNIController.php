@@ -96,7 +96,7 @@ class MabesTNIController extends Controller
     public function edit($id)
     {
         $frekuensi = Frekuensi::find($id);
-        return view('layout.edit', compact('frekuensi'));
+        return view('layout.mabestniEdit', compact('frekuensi'));
     }
 
     /**

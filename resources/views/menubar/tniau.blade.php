@@ -67,7 +67,7 @@
                             <td>{{ $frekuensi->status }}</td>
                             <td>
                                 <form action="{{ route('tniau.destroy', $frekuensi->id) }}" method="POST">
-                                    <a href="{{ route('index.edit', $frekuensi->id) }}" class="btn btn-sm btn-warning">
+                                    <a href="{{ route('tniau.edit', $frekuensi->id) }}" class="btn btn-sm btn-warning">
                                         <i class="fas fa-edit" style="font-size:10px"></i></a>
                                     
                                     @csrf

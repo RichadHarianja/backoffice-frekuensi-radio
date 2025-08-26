@@ -33,7 +33,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/page/update/{id}', [MabesTNIController::class, 'update'])->name('index.update');
 
     //Delete Method
-    Route::delete('/page/delete/{id}', [MabesTNIController::class, 'destroy'])->name('index.destroy');
+    Route::delete('/mabestni/delete/{id}', [MabesTNIController::class, 'destroy'])->name('mabestni.destroy');
+    Route::delete('/tniad/delete/{id}', [TNIADController::class, 'destroy'])->name('tniad.destroy');
     Route::delete('/page/delete/user/{id}', [UsersController::class, 'destroy'])->name('users.destroy');
 
     // Users

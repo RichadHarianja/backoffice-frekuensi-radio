@@ -18,9 +18,11 @@
                 Daftar Frekuensi Radio TNI AD <br></br>
             </div>
 
+            @if(Auth::check() && Auth::user()->role === 0 || Auth::check() && Auth::user()->role === 1)
             <div class="input-group mb-3 float-right">
                 <a href="{{ route('tniad.create', $divisiCode->divisi_code) }}" class="btn btn-sm btn-primary p-2" style='margin-left:-12px'><i class="fas fa-plus"></i> Tambah Data</a>
             </div>
+            @endif
 
             <div class="card-body">
 

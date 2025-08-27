@@ -30,7 +30,9 @@
                             <th>LOKASI</th>
                             <th>SATUAN KERJA</th>
                             <th>STATUS</th>
+                            @if(Auth::check() && Auth::user()->role === 0 || Auth::check() && Auth::user()->role === 1)
                             <th width="280px">AKSI</th>
+                            @endif
                         </tr>
                     </thead>
                     <tfoot>
@@ -45,7 +47,9 @@
                             <th>LOKASI</th>
                             <th>SATUAN KERJA</th>
                             <th>STATUS</th>
+                            @if(Auth::check() && Auth::user()->role === 0 || Auth::check() && Auth::user()->role === 1)
                             <th>AKSI</th>
+                            @endif
                         </tr>
                     </tfoot>
                     <tbody>
@@ -64,7 +68,14 @@
                             <td>{{ $frekuensi->power }}</td>
                             <td>{{ $frekuensi->location }}</td>
                             <td>{{ $frekuensi->unit }}</td>
-                            <td>{{ $frekuensi->status }}</td>
+                            <td>
+                                @if($frekuensi->status==0)
+                                    AKTIF
+                                @else
+                                    TIDAK AKTIF
+                                @endif
+                            </td>
+                            @if(Auth::check() && Auth::user()->role === 0 || Auth::check() && Auth::user()->role === 1)
                             <td>
                                 <form action="{{ route('tniau.destroy', $frekuensi->id) }}" method="POST">
                                     <a href="{{ route('tniau.edit', $frekuensi->id) }}" class="btn btn-sm btn-warning">
@@ -75,6 +86,7 @@
                                     <button type="submit" onclick="return confirm('Are you sure?')"  class="btn btn-danger btn-sm"><i class="fas fa-trash" style="font-size:10px"></i></button>
                                 </form>
                             </td>
+                            @endif
 
                             <?php $number++; ?>
 

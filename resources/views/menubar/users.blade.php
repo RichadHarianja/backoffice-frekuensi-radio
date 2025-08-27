@@ -23,16 +23,17 @@
             </div>
 
             <div class="card-body">
-
                 <table id="datatablesSimple">
                     <thead>
                         <tr>
                             <th>NO</th>
                             <th>NAMA </th>
                             <th>EMAIL </th>
-                            <th>STATUS </th>
                             <th>ROLE</th>
+                            <th>STATUS </th>
+                            @if(Auth::check() && Auth::user()->role === 0)
                             <th width="280px">AKSI</th>
+                            @endif
                         </tr>
                     </thead>
                     <tfoot>
@@ -42,7 +43,9 @@
                             <th>EMAIL </th>
                             <th>ROLE</th>
                             <th>STATUS </th>
+                            @if(Auth::check() && Auth::user()->role === 0)
                             <th width="280px">AKSI</th>
+                            @endif
                         </tr>
                     </tfoot>
                     <tbody>
@@ -54,8 +57,10 @@
                             <td>
                                 @if($users->role==0)
                                     ADMIN
+                                @elseif($users->role==1)
+                                    STAFF
                                 @else
-                                    MANAGER
+                                    PIMPINAN
                                 @endif
                             </td>
                             <td>
@@ -65,6 +70,7 @@
                                     TIDAK AKTIF
                                 @endif
                             </td>
+                            @if(Auth::check() && Auth::user()->role === 0)
                             <td>
                                 <form action="{{ route('users.destroy', $users->id) }}" method="POST">
                                     <a href="{{ route('users.edit', $users->id) }}" class="btn btn-sm btn-warning">
@@ -75,6 +81,7 @@
                                     <button type="submit" onclick="return confirm('Are you sure want to delete this user data?')"  class="btn btn-danger btn-sm"><i class="fas fa-trash" style="font-size:10px"></i></button>
                                 </form>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>

@@ -58,7 +58,13 @@
                             <td>{{ $frekuensi->location }}</td>
                             <td>{{ $frekuensi->unit }}</td>
                             <td>{{ $frekuensi->divisi_code }}</td>
-                            <td>{{ $frekuensi->status }}</td>
+                            <td>
+                                @if($frekuensi->status==0)
+                                    AKTIF
+                                @else
+                                    TIDAK AKTIF
+                                @endif
+                            </td>
                             <!-- <td></td> -->
                         </tr>
                         @endforeach

@@ -38,7 +38,9 @@
                             <th>SATUAN KERJA</th>
                             <th>DIVISI</th>
                             <th>STATUS</th>
+                            @if(Auth::check() && Auth::user()->role === 0 || Auth::check() && Auth::user()->role === 1)
                             <th width="280px">AKSI</th>
+                            @endif
                         </tr>
                     </thead>
                     <tfoot>
@@ -54,7 +56,9 @@
                             <th>SATUAN KERJA</th>
                             <th>DIVISI</th>
                             <th>STATUS</th>
+                            @if(Auth::check() && Auth::user()->role === 0 || Auth::check() && Auth::user()->role === 1)
                             <th>AKSI</th>
+                            @endif
                         </tr>
                     </tfoot>
                     <tbody>
@@ -81,6 +85,7 @@
                                     TIDAK AKTIF
                                 @endif
                             </td>
+                            @if(Auth::check() && Auth::user()->role === 0 || Auth::check() && Auth::user()->role === 1)
                             <td>
                                 <form action="{{ route('tniad.destroy', $frekuensi->id) }}" method="POST">
                                     <a href="{{ route('tniad.edit', $frekuensi->id) }}" class="btn btn-sm btn-warning">
@@ -91,6 +96,7 @@
                                     <button type="submit" onclick="return confirm('Are you sure want to delete this data?')"  class="btn btn-danger btn-sm"><i class="fas fa-trash" style="font-size:10px"></i></button>
                                 </form>
                             </td>
+                            @endif
 
                             <?php $number++; ?>
                             

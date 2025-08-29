@@ -73,13 +73,7 @@
                             <td>{{ $frekuensi->location }}</td>
                             <td>{{ $frekuensi->unit }}</td>
                             <td>{{ $frekuensi->divisi->name }}</td>
-                            <td>
-                                @if($frekuensi->status==0)
-                                    AKTIF
-                                @else
-                                    TIDAK AKTIF
-                                @endif
-                            </td>
+                            <td>{{ $frekuensi->status }}</td>
                             @if(Auth::check() && Auth::user()->role === 0 || Auth::check() && Auth::user()->role === 1)
                             <td>
                                 <form action="{{ route('tniau.destroy', $frekuensi->id) }}" method="POST">

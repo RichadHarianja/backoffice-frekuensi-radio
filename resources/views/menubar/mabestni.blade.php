@@ -79,7 +79,7 @@
                             <td>{{ $frekuensi->power }}</td>
                             <td>{{ $frekuensi->location }}</td>
                             <td>{{ $frekuensi->unit }}</td>
-                            <td>{{ $frekuensi->divisi_code }}</td>
+                            <td>{{ $frekuensi->divisi->name }}</td>
                             <td>
                                 @if($frekuensi->status==0)
                                     AKTIF

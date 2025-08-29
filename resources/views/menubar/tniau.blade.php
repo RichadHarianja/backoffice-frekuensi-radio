@@ -31,6 +31,7 @@
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
                             <th>SATUAN KERJA</th>
+                            <th>DIVISI</th>
                             <th>STATUS</th>
                             @if(Auth::check() && Auth::user()->role === 0 || Auth::check() && Auth::user()->role === 1)
                             <th width="280px">AKSI</th>
@@ -48,6 +49,7 @@
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
                             <th>SATUAN KERJA</th>
+                            <th>DIVISI</th>
                             <th>STATUS</th>
                             @if(Auth::check() && Auth::user()->role === 0 || Auth::check() && Auth::user()->role === 1)
                             <th>AKSI</th>
@@ -70,6 +72,7 @@
                             <td>{{ $frekuensi->power }}</td>
                             <td>{{ $frekuensi->location }}</td>
                             <td>{{ $frekuensi->unit }}</td>
+                            <td>{{ $frekuensi->divisi->name }}</td>
                             <td>
                                 @if($frekuensi->status==0)
                                     AKTIF

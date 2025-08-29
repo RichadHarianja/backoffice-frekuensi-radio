@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="power">POWER [W]:</label>
+                        <label for="power">POWER [W] :</label>
                         <input type="text" class="form-control @error('power') is-invalid @enderror" id="power" name="power" value="{{ $frekuensi->power }}">
                         @error('power')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="location">LOKASI:</label>
+                        <label for="location">LOKASI :</label>
                         <input type="text" class="form-control @error('location') is-invalid @enderror" id="location" name="location" value="{{ $frekuensi->location }}">
                         @error('location')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -87,7 +87,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="unit">SATUAN KERJA:</label>
+                        <label for="unit">SATUAN KERJA :</label>
                         <input type="text" class="form-control @error('unit') is-invalid @enderror" id="unit" name="unit" value="{{ $frekuensi->unit }}">
                         @error('unit')
                             <div class="invalid-feedback">{{ $message }}</div>
@@ -95,7 +95,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="divisi_code">DIVISI:</label>
+                        <label for="divisi_code">MATRA :</label>
                         <input type="text" class="form-control @error('divisi_code') is-invalid @enderror" id="divisi_code" name="divisi_code" value="{{ $frekuensi->divisi_code }}" readonly>
                         @error('divisi_code')
                             <div class="invalid-feedback">{{ $message }}</div>

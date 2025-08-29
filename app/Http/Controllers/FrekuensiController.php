@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Frekuensi;
+use App\Models\Divisi;
 
 class FrekuensiController extends Controller
 {
@@ -12,8 +13,8 @@ class FrekuensiController extends Controller
      */
     public function index()
     {
-        $frekuensi = Frekuensi::all();
-        return view('dashboard.index', compact('frekuensi'));        
+         $frekuensi = Frekuensi::with('divisi')->get(); 
+        return view('dashboard.index', compact('frekuensi'));     
     }
 
     /**

@@ -24,9 +24,8 @@
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
                             <th>SATUAN KERJA</th>
-                            <th>DIVISI</th>
+                            <th>MATRA</th>
                             <th>STATUS</th>
-                            <!-- <th>AKSI</th> -->
                         </tr>
                     </thead>
                     <tfoot>
@@ -40,9 +39,8 @@
                             <th>POWER [W]</th>
                             <th>LOKASI</th>
                             <th>SATUAN KERJA</th>
-                            <th>DIVISI</th>
+                            <th>MATRA</th>
                             <th>STATUS</th>
-                            <!-- <th>AKSI</th> -->
                         </tr>
                     </tfoot>
                     <tbody>
@@ -57,7 +55,7 @@
                             <td>{{ $frekuensi->power }}</td>
                             <td>{{ $frekuensi->location }}</td>
                             <td>{{ $frekuensi->unit }}</td>
-                            <td>{{ $frekuensi->divisi_code }}</td>
+                            <td>{{ $frekuensi->divisi->name }}</td>
                             <td>
                                 @if($frekuensi->status==0)
                                     AKTIF
@@ -65,7 +63,6 @@
                                     TIDAK AKTIF
                                 @endif
                             </td>
-                            <!-- <td></td> -->
                         </tr>
                         @endforeach
                     </tbody>

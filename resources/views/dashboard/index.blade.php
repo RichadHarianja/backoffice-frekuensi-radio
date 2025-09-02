@@ -5,6 +5,31 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
+
+        <div class="row">
+
+        <div class="col-xl-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-chart-area me-1"></i>
+                    Chart Total Frekuensi Per Matra 
+                </div>
+                <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+            </div>
+        </div>
+
+        <div class="col-xl-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-chart-bar me-1"></i>
+                        Chart Total Type Frekuensi
+                    </div>
+                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                </div>
+            </div>
+        </div>
+
+
         <div class="row">
             <div class="card-header">
                 <i class="fas fa-table me-1"></i>
@@ -66,3 +91,11 @@
     </div>
 
 @endsection
+
+<script>
+    // Embed data from Laravel
+    const chartLabels = {!! json_encode($dataChart['labelsForBarChart']) !!};
+    const chartData = {!! json_encode($dataChart['valuesForBarChart']) !!};
+    const matraLabels = {!! json_encode($dataChart['labelsForAreaChart']) !!};
+    const matraData = {!! json_encode($dataChart['valuesForAreaChart']) !!};
+</script>

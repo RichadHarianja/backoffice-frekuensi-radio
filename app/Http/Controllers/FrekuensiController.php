@@ -13,8 +13,30 @@ class FrekuensiController extends Controller
      */
     public function index()
     {
-         $frekuensi = Frekuensi::with('divisi')->get(); 
-        return view('dashboard.index', compact('frekuensi'));     
+        $frekuensi = Frekuensi::with('divisi')->get();
+        
+        // Collect data type code
+
+        $typeCode0 = Frekuensi::where('type_code', '=', 'HF')->count();
+        $typeCode1 = Frekuensi::where('type_code', '=', 'VHF')->count();
+        $typeCode2 = Frekuensi::where('type_code', '=', 'UHF')->count();
+        $typeCode3 = Frekuensi::where('type_code', '=', 'HF,UFF,VHF')->count();
+
+        $matra0 = Frekuensi::where('divisi_code', '=', '1')->count();
+        $matra1 = Frekuensi::where('divisi_code', '=', '2')->count();
+        $matra2 = Frekuensi::where('divisi_code', '=', '3')->count();
+        $matra3 = Frekuensi::where('divisi_code', '=', '4')->count();
+
+        // $type_code = $frekuensi->pluck('type_code')->toArray();
+        // $divisi_code = $frekuensi->pluck('divisi_code')->toArray();
+        
+        $dataChart = [
+            'labelsForBarChart' => ['HF', 'UHF', 'VHF', 'HF,UFF,VHF'],
+            'valuesForBarChart' => [$typeCode0, $typeCode2, $typeCode1, $typeCode3],
+            'labelsForAreaChart' => ['MABES TNI', 'TNI AD', 'TNI AL', 'TNI AU'],
+            'valuesForAreaChart' => [$matra0, $matra1, $matra2, $matra3],
+        ];
+        return view('dashboard.index', compact('frekuensi', 'dataChart'));     
     }
 
     /**
